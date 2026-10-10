@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midday Munchies | 65+ Global Cuisines Lunch Delivery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.03);
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(249, 115, 22, 0.4);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(234, 88, 12, 0.7);
+        }
+    </style>
+</head>
+<body class="bg-amber-50/40 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col selection:bg-orange-500 selection:text-white">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-orange-100 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-orange-600 to-amber-500 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-orange-500/25 group-hover:scale-105 transition-transform">
+                    🌮
+                </div>
+                <div>
+                    <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+                        Midday Munchies
+                    </span>
+                    <span class="block text-[10px] text-slate-400 font-medium tracking-wide uppercase">65+ Gourmet Lunch Options</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+                <a href="#menu" class="text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-500 transition-colors">Global Menu</a>
+                <a href="#cuisines" class="text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-500 transition-colors">Cuisines</a>
+                <a href="#reviews" class="text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-500 transition-colors">Reviews</a>
+            </nav>
+
+            <!-- Actions (Theme toggle & Cart Button) -->
+            <div class="flex items-center space-x-3">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" aria-label="Toggle Theme" class="p-2.5 rounded-2xl bg-orange-50 dark:bg-slate-800 text-orange-600 dark:text-amber-400 hover:bg-orange-100 dark:hover:bg-slate-700 transition-all">
+                    <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
+                </button>
+
+                <!-- Cart Button Trigger -->
+                <button id="open-cart-btn" aria-label="Shopping Cart" class="relative px-4 py-2.5 rounded-2xl bg-gradient-to-r from-orange-600 to-amber-500 text-white font-semibold text-xs shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:scale-105 transition-all flex items-center space-x-2">
+                    <i class="fa-solid fa-bag-shopping text-sm"></i>
+                    <span class="hidden sm:inline">My Order</span>
+                    <span id="cart-badge" class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-slate-900 dark:bg-white dark:text-slate-900 text-white text-[11px] font-bold rounded-full flex items-center justify-center shadow-md">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-12 lg:py-20 bg-gradient-to-b from-orange-100/50 via-amber-50/20 to-transparent dark:from-slate-900 dark:to-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-700 dark:text-orange-400 text-xs font-bold tracking-wide uppercase">
+                        <i class="fa-solid fa-fire text-orange-500"></i>
+                        <span>Over 65+ Authentic Lunch Choices</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+                        Your Ultimate Lunch Destination with <span class="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">65+ Specialties</span>
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0">
+                        Explore our massive menu featuring American smash burgers, Egyptian grills & koshari, Italian wood-fired pizza & pasta, Mexican tacos, Asian sushi, healthy bowls, and decadent desserts.
+                    </p>
+                    
+                    <!-- Search Bar in Hero -->
+                    <div class="max-w-xl mx-auto lg:mx-0 bg-white dark:bg-slate-900 p-2 rounded-2xl shadow-xl border border-orange-100 dark:border-slate-800 flex items-center">
+                        <div class="pl-4 text-orange-500">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <input type="text" id="hero-search" placeholder="Search burgers, pasta, tacos, sushi, koshari, steak..." class="w-full px-4 py-3 bg-transparent text-xs sm:text-sm focus:outline-none placeholder:text-slate-400">
+                        <button onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})" class="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-500 text-white font-bold text-xs sm:text-sm shadow-md hover:opacity-95 transition-all">
+                            Explore All
+                        </button>
+                    </div>
+
+                    <!-- Quick Highlights -->
+                    <div class="grid grid-cols-3 gap-4 pt-4 max-w-lg mx-auto lg:mx-0 border-t border-slate-200/60 dark:border-slate-800">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 dark:bg-orange-950/50 flex items-center justify-center text-orange-600">
+                                <i class="fa-solid fa-bowl-food"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="font-bold text-xs sm:text-sm">65+ Items</p>
+                                <p class="text-[11px] text-slate-400">Massive Selection</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="font-bold text-xs sm:text-sm">25 Mins</p>
+                                <p class="text-[11px] text-slate-400">Express Delivery</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/50 flex items-center justify-center text-amber-600">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="font-bold text-xs sm:text-sm">4.9 / 5.0</p>
+                                <p class="text-[11px] text-slate-400">Top Rated</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-orange-500 to-amber-400 rounded-3xl blur-2xl opacity-25 animate-pulse"></div>
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Massive Gourmet Spread" class="relative rounded-3xl shadow-2xl object-cover w-full h-[380px] sm:h-[450px]">
+                        <!-- Floating Badge -->
+                        <div class="absolute bottom-6 left-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-5 py-3 rounded-2xl shadow-xl border border-orange-100 dark:border-slate-800 flex items-center space-x-3">
+                            <span class="text-2xl">🔥</span>
+                            <div>
+                                <p class="font-bold text-xs">Freshly Prepared Daily</p>
+                                <p class="text-[10px] text-orange-600 font-semibold">Hot & Ready for Lunch</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Menu Section -->
+    <main id="menu" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full space-y-8">
+        
+        <!-- Section Header & Controls -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 dark:border-slate-800 pb-6">
+            <div>
+                <span class="text-orange-600 dark:text-orange-400 text-xs font-bold uppercase tracking-wider">The Complete Menu</span>
+                <h2 class="text-3xl font-extrabold tracking-tight mt-1">Browse 65+ Lunch Options</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Filter by category or cuisine to find your ideal midday meal.</p>
+            </div>
+            
+            <!-- Sorting Controls -->
+            <div class="flex flex-wrap items-center gap-3">
+                <select id="sort-select" class="px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm">
+                    <option value="default">Sort by: Popularity</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Cuisine Category Tabs -->
+        <div id="category-tabs" class="flex items-center space-x-2 overflow-x-auto pb-3 scrollbar-none">
+            <button onclick="filterCategory('All')" class="category-btn px-5 py-2.5 rounded-xl bg-orange-600 text-white font-bold text-xs shadow-md shadow-orange-600/20 whitespace-nowrap transition-all">🌟 All Items (68)</button>
+            <button onclick="filterCategory('American Fast Food')" class="category-btn px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-orange-50 font-semibold text-xs border border-slate-200 dark:border-slate-800 whitespace-nowrap transition-all">🍔 American Fast Food</button>
+            <button onclick="filterCategory('Egyptian Traditional')" class="category-btn px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-orange-50 font-semibold text-xs border border-slate-200 dark:border-slate-800 whitespace-nowrap transition-all">🧆 Egyptian Traditional</button>
+            <button onclick="filterCategory('Italian Pasta & Pizza')" class="category-btn px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-orange-50 font-semibold text-xs border border-slate-200 dark:border-slate-800 whitespace-nowrap transition-all">🍕 Italian Pasta & Pizza</button>
+            <button onclick="filterCategory('Mexican Tex-Mex')" class="category-btn px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-orange-50 font-semibold text-xs border border-slate-200 dark:border-slate-800 whitespace-nowrap transition-all">🌮 Mexican Tex-Mex</button>
+            <button onclick="filterCategory('Asian Noodles & Sushi')" class="category-btn px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-orange-50 font-semibold text-xs border border-slate-200 dark:border-slate-800 whitespace-nowrap transition-all">🍜 Asian Noodles & Sushi</button>
+            <button onclick="filterCategory('Healthy Bowls & Salads')" class="category-btn px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-orange-50 font-semibold text-xs border border-slate-200 dark:border-slate-800 whitespace-nowrap transition-all">🥗 Healthy Bowls & Salads</button>
+            <button onclick="filterCategory('Desserts')" class="category-btn px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-orange-50 font-semibold text-xs border border-slate-200 dark:border-slate-800 whitespace-nowrap transition-all">🍰 Desserts</button>
+            <button onclick="filterCategory('Beverages')" class="category-btn px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-orange-50 font-semibold text-xs border border-slate-200 dark:border-slate-800 whitespace-nowrap transition-all">🥤 Beverages</button>
+        </div>
+
+        <!-- Food Items Grid Container -->
+        <div id="food-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Dynamically populated food cards -->
+        </div>
+    </main>
+
+    <!-- Quick View / Customization Modal -->
+    <div id="quick-view-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200 max-h-[90vh] flex flex-col">
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-slate-900/60 text-white hover:bg-slate-900 flex items-center justify-center backdrop-blur-md transition-all">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="relative h-52 sm:h-60 shrink-0">
+                <img id="modal-img" src="" alt="Food item" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+                    <div>
+                        <span id="modal-category" class="px-2.5 py-1 rounded-lg bg-orange-600 text-white text-[10px] font-bold uppercase tracking-wider">Cuisine</span>
+                        <h3 id="modal-name" class="text-2xl font-extrabold text-white mt-1">Item Name</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 space-y-6 overflow-y-auto flex-1">
+                <p id="modal-desc" class="text-sm text-slate-600 dark:text-slate-300">Detailed food description goes here.</p>
+                
+                <!-- Customization Options -->
+                <div class="space-y-4 border-t border-slate-100 dark:border-slate-800 pt-4">
+                    <h4 class="font-bold text-xs uppercase text-slate-400 tracking-wider">Customize Your Meal</h4>
+                    
+                    <label class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="opt-extra" class="w-4 h-4 text-orange-600 rounded focus:ring-orange-500">
+                            <span id="opt-extra-label" class="text-xs font-semibold">Extra Cheese / Sauce / Toppings</span>
+                        </div>
+                        <span id="opt-extra-price" class="text-xs font-bold text-orange-600">+25 EGP</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="opt-drink" class="w-4 h-4 text-orange-600 rounded focus:ring-orange-500">
+                            <span class="text-xs font-semibold">Add Soft Drink & French Fries Combo</span>
+                        </div>
+                        <span class="text-xs font-bold text-orange-600">+45 EGP</span>
+                    </label>
+
+                    <!-- Special Instructions -->
+                    <div class="space-y-1.5 pt-2">
+                        <label class="font-bold text-xs uppercase text-slate-400 tracking-wider block">Special Instructions / Allergies</label>
+                        <input type="text" id="modal-instructions" placeholder="e.g. No onions, extra spicy, dressing on the side..." class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    </div>
+                </div>
+
+                <!-- Quantity & Add to Cart Action -->
+                <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <div>
+                        <span class="text-[10px] text-slate-400 uppercase font-semibold block">Total Price</span>
+                        <span id="modal-price" class="text-2xl font-black text-orange-600">0 EGP</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="flex items-center border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                            <button onclick="adjustModalQty(-1)" class="px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold text-sm">-</button>
+                            <span id="modal-qty" class="px-4 font-bold text-sm">1</span>
+                            <button onclick="adjustModalQty(1)" class="px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold text-sm">+</button>
+                        </div>
+                        <button id="modal-add-btn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-500 text-white font-bold text-xs shadow-lg shadow-orange-500/25 hover:opacity-95 transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Add to Order</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide-Out Cart Drawer -->
+    <div id="cart-drawer-overlay" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+    <div id="cart-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
+        <!-- Cart Header -->
+        <div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-orange-50/50 dark:bg-slate-900">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-orange-600 text-white flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div>
+                    <h3 class="font-extrabold text-base">Your Lunch Order</h3>
+                    <p id="cart-item-count" class="text-xs text-slate-400">0 items selected</p>
+                </div>
+            </div>
+            <button id="close-cart-btn" class="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-slate-100 dark:divide-slate-800">
+            <!-- Dynamically populated cart items -->
+        </div>
+
+        <!-- Cart Footer / Checkout Form -->
+        <div class="p-6 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 space-y-4">
+            <div class="space-y-2">
+                <input type="text" id="checkout-name" placeholder="Your Full Name" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="text" id="checkout-address" placeholder="Delivery Address / Office Desk #" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <select id="checkout-payment" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    <option value="Cash on Delivery">Cash on Delivery (COD)</option>
+                    <option value="Visa / Mastercard">Visa / Mastercard Online</option>
+                    <option value="InstaPay / Wallet">InstaPay / Mobile Wallet</option>
+                </select>
+            </div>
+
+            <div class="space-y-1.5 text-xs pt-2 border-t border-slate-200 dark:border-slate-800">
+                <div class="flex justify-between text-slate-500">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal" class="font-bold text-slate-800 dark:text-slate-200">0 EGP</span>
+                </div>
+                <div class="flex justify-between text-slate-500">
+                    <span>Express Delivery Fee</span>
+                    <span class="font-bold text-emerald-600">30 EGP</span>
+                </div>
+                <div class="flex justify-between text-base font-extrabold pt-2 border-t border-slate-200 dark:border-slate-800">
+                    <span>Total Amount</span>
+                    <span id="cart-total" class="text-orange-600">30 EGP</span>
+                </div>
+            </div>
+
+            <button id="checkout-btn" onclick="submitOrder()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-orange-600 to-amber-500 text-white font-bold text-sm shadow-lg shadow-orange-500/25 hover:opacity-95 transition-all flex items-center justify-center space-x-2">
+                <span>Place Order Now</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Order Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-md w-full p-8 text-center space-y-6 shadow-2xl">
+            <div class="w-16 h-16 rounded-3xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 flex items-center justify-center text-3xl mx-auto shadow-inner">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-2xl font-extrabold">Order Placed Successfully!</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Your lunch feast is being freshly prepared and will arrive in approximately <span class="font-bold text-orange-600">25 minutes</span>.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 text-left text-xs space-y-1">
+                <p><span class="font-bold text-slate-400">Order ID:</span> <span id="success-order-id" class="font-mono font-bold">#MM-8492</span></p>
+                <p><span class="font-bold text-slate-400">Estimated Delivery:</span> <span class="font-semibold text-emerald-600">Today, 2:15 PM</span></p>
+            </div>
+            <button onclick="closeSuccessModal()" class="w-full py-3 rounded-xl bg-orange-600 text-white font-bold text-xs shadow-md hover:bg-orange-700 transition-all">
+                Back to Menu
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex items-center justify-center space-x-3">
+                <div class="w-8 h-8 rounded-xl bg-orange-600 text-white flex items-center justify-center font-bold">🌮</div>
+                <span class="font-extrabold text-lg">Midday Munchies Global Kitchen</span>
+            </div>
+            <p class="text-xs text-slate-400 max-w-md mx-auto">The ultimate 65+ multi-cuisine gourmet lunch destination. Crafted with passion, delivered fast.</p>
+            <p class="text-[11px] text-slate-400 pt-4 border-t border-slate-100 dark:border-slate-800">&copy; 2026 Midday Munchies Co. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            htmlElement.classList.remove('dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // 68 Comprehensive Food Items Database across 8 Cuisines
+        const menuItems = [
+            // --- AMERICAN FAST FOOD (10 Items) ---
+            {
+                id: 1, name: "The Ultimate Truffle Burger", category: "American Fast Food", price: 245, rating: 4.9, reviews: 128, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+                description: "Double smashed Angus beef patties, truffle aioli, aged cheddar, caramelized onions in a toasted brioche bun."
+            },
+            {
+                id: 2, name: "Crispy Buffalo Chicken Sandwich", category: "American Fast Food", price: 195, rating: 4.8, reviews: 94, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&w=600&q=80",
+                description: "Buttermilk fried chicken breast, spicy buffalo glaze, coleslaw, and pickles on a buttery potato bun."
+            },
+            {
+                id: 3, name: "Loaded BBQ Bacon Fries", category: "American Fast Food", price: 135, rating: 4.7, reviews: 81, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=600&q=80",
+                description: "Crispy french fries topped with smoky BBQ pulled beef, melted cheddar sauce, jalapeños, and ranch."
+            },
+            {
+                id: 4, name: "Classic Cheeseburger Deluxe", category: "American Fast Food", price: 175, rating: 4.8, reviews: 140, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80",
+                description: "Single juicy beef patty, American cheese, crisp lettuce, tomato, pickles, and special house sauce."
+            },
+            {
+                id: 5, name: "Crispy Chicken Tenders (5 pcs)", category: "American Fast Food", price: 160, rating: 4.9, reviews: 112, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=600&q=80",
+                description: "Golden-brown chicken tenderloin strips served with honey mustard and smoky BBQ dipping sauces."
+            },
+            {
+                id: 6, name: "Bacon Mushroom Swiss Burger", category: "American Fast Food", price: 230, rating: 4.7, reviews: 76, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80",
+                description: "Angus beef patty topped with sautéed wild mushrooms, Swiss cheese, and crispy beef bacon."
+            },
+            {
+                id: 7, name: "Philly Cheesesteak Sandwich", category: "American Fast Food", price: 210, rating: 4.8, reviews: 89, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80",
+                description: "Sliced ribeye steak grilled with bell peppers, onions, and smothered in melted provolone cheese on a hoagie roll."
+            },
+            {
+                id: 8, name: "Honey Garlic Wings (8 pcs)", category: "American Fast Food", price: 185, rating: 4.9, reviews: 104, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=600&q=80",
+                description: "Crispy jumbo chicken wings glazed in sticky honey garlic sauce with toasted sesame seeds."
+            },
+            {
+                id: 9, name: "Classic Hot Dog with Chili & Cheese", category: "American Fast Food", price: 120, rating: 4.6, reviews: 55, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+                description: "All-beef frankfurter in a soft bun, topped with homemade beef chili, melted cheddar, and chopped onions."
+            },
+            {
+                id: 10, name: "Onion Rings Basket with Ranch", category: "American Fast Food", price: 90, rating: 4.7, reviews: 68, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=600&q=80",
+                description: "Thick-cut sweet onions coated in crispy seasoned batter and served with homemade buttermilk ranch."
+            },
+
+            // --- EGYPTIAN TRADITIONAL (10 Items) ---
+            {
+                id: 11, name: "Royal Mixed Grill Platter", category: "Egyptian Traditional", price: 340, rating: 5.0, reviews: 215, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+                description: "Succulent shish tawooq, kofta skewers, and grilled lamb chops served with oriental rice, tahini, and baladi bread."
+            },
+            {
+                id: 12, name: "Super Hawawshi Baladi", category: "Egyptian Traditional", price: 145, rating: 4.8, reviews: 172, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80",
+                description: "Fresh baladi bread stuffed with spiced minced beef, onions, peppers, and baked to crunchy perfection."
+            },
+            {
+                id: 13, name: "Cairo Stuffed Vine Leaves & Mahshi Pot", category: "Egyptian Traditional", price: 160, rating: 4.7, reviews: 84, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80",
+                description: "Tender vine leaves and stuffed zucchini simmered in rich tomato broth with herbs and spices."
+            },
+            {
+                id: 14, name: "Alexandria Liver & Sausage Feteer", category: "Egyptian Traditional", price: 180, rating: 4.9, reviews: 130, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
+                description: "Flaky layered feteer meshaltet topped with spiced Alexandrian beef liver and Egyptian spiced sausage."
+            },
+            {
+                id: 15, name: "Classic El Omda Koshari Bowl", category: "Egyptian Traditional", price: 110, rating: 4.8, reviews: 195, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=600&q=80",
+                description: "Layers of rice, macaroni, lentils, crispy fried onions, chickpeas, tangy daqqa, and spicy tomato sauce."
+            },
+            {
+                id: 16, name: "Molokhia with Shrimps & Rice", category: "Egyptian Traditional", price: 220, rating: 4.9, reviews: 110, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+                description: "Traditional green herb soup cooked with garlic and coriander, served with juicy shrimps and vermicelli rice."
+            },
+            {
+                id: 17, name: "Grilled Shish Tawooq Platter", category: "Egyptian Traditional", price: 190, rating: 4.8, reviews: 145, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80",
+                description: "Marinated chicken breast skewers grilled over charcoal, served with garlic paste (toum), fries, and pickles."
+            },
+            {
+                id: 18, name: "Egyptian Mombar & Fattah Feast", category: "Egyptian Traditional", price: 240, rating: 4.7, reviews: 92, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80",
+                description: "Crispy stuffed rice sausages (mombar) paired with garlic vinegar beef fattah and toasted baladi bread."
+            },
+            {
+                id: 19, name: "Baked Macaroni Béchamel (Raka)", category: "Egyptian Traditional", price: 150, rating: 4.9, reviews: 160, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281298?auto=format&fit=crop&w=600&q=80",
+                description: "Penne pasta with minced meat ragu, smothered in rich creamy béchamel and golden melted cheese crust."
+            },
+            {
+                id: 20, name: "Egyptian Taameya & Ful Medames Box", category: "Egyptian Traditional", price: 95, rating: 4.6, reviews: 88, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
+                description: "Crunchy broad bean falafel, slow-cooked fava beans with olive oil and cumin, salad, and fresh baladi bread."
+            },
+
+            // --- ITALIAN PASTA & PIZZA (10 Items) ---
+            {
+                id: 21, name: "Creamy Fettuccine Alfredo with Chicken", category: "Italian Pasta & Pizza", price: 220, rating: 4.9, reviews: 142, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1645112411341-694fd42ab6fa?auto=format&fit=crop&w=600&q=80",
+                description: "Fresh fettuccine pasta tossed in a velvety parmesan cream sauce with grilled chicken breast and fresh parsley."
+            },
+            {
+                id: 22, name: "Wood-Fired Margherita Pizza", category: "Italian Pasta & Pizza", price: 190, rating: 4.8, reviews: 130, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80",
+                description: "Authentic Neapolitan crust with San Marzano tomato sauce, fresh mozzarella di bufala, basil leaves, and olive oil."
+            },
+            {
+                id: 23, name: "Spaghetti Bolognese Nonna Style", category: "Italian Pasta & Pizza", price: 205, rating: 4.7, reviews: 95, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281298?auto=format&fit=crop&w=600&q=80",
+                description: "Slow-simmered Italian beef ragu over al dente spaghetti with shaved Parmigiano-Reggiano."
+            },
+            {
+                id: 24, name: "Pepperoni Inferno Pizza", category: "Italian Pasta & Pizza", price: 235, rating: 4.9, reviews: 178, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80",
+                description: "Loaded with spicy Italian pepperoni, hot honey drizzle, mozzarella cheese, and chili flakes."
+            },
+            {
+                id: 25, name: "Penne Arrabiata with Olives", category: "Italian Pasta & Pizza", price: 170, rating: 4.6, reviews: 72, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80",
+                description: "Penne pasta in a fiery garlic and chili tomato sauce with black olives and fresh basil."
+            },
+            {
+                id: 26, name: "Four Cheese (Quattro Formaggi) Pizza", category: "Italian Pasta & Pizza", price: 250, rating: 4.9, reviews: 115, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+                description: "Mozzarella, gorgonzola, parmesan, and creamy fontina cheese on a crispy artisanal crust."
+            },
+            {
+                id: 27, name: "Creamy Truffle Mushroom Risotto", category: "Italian Pasta & Pizza", price: 270, rating: 4.9, reviews: 88, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&w=600&q=80",
+                description: "Arborio rice slow-cooked in rich mushroom broth, white wine, wild mushrooms, and black truffle oil."
+            },
+            {
+                id: 28, name: "Lasagna al Forno", category: "Italian Pasta & Pizza", price: 240, rating: 4.8, reviews: 134, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=600&q=80",
+                description: "Layered pasta sheets with rich beef ragu, béchamel sauce, and baked mozzarella cheese."
+            },
+            {
+                id: 29, name: "Seafood Linguine Marinara", category: "Italian Pasta & Pizza", price: 290, rating: 4.9, reviews: 102, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80",
+                description: "Linguine pasta tossed with fresh shrimp, calamari, mussels in a garlic white wine tomato sauce."
+            },
+            {
+                id: 30, name: "Chicken Pesto Penne Pasta", category: "Italian Pasta & Pizza", price: 215, rating: 4.8, reviews: 96, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=600&q=80",
+                description: "Penne pasta tossed in aromatic basil pesto cream sauce, grilled chicken, sun-dried tomatoes, and pine nuts."
+            },
+
+            // --- MEXICAN TEX-MEX (8 Items) ---
+            {
+                id: 31, name: "Carne Asada Street Tacos (3 pcs)", category: "Mexican Tex-Mex", price: 210, rating: 4.9, reviews: 156, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=600&q=80",
+                description: "Grilled flank steak on corn tortillas with fresh cilantro, diced onions, guacamole, and house salsa verde."
+            },
+            {
+                id: 32, name: "Mega Chicken Fajita Burrito", category: "Mexican Tex-Mex", price: 185, rating: 4.8, reviews: 110, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
+                description: "Grilled chicken strips, seasoned rice, black beans, bell peppers, cheese, and sour cream wrapped in a warm flour tortilla."
+            },
+            {
+                id: 33, name: "Crispy Beef & Cheese Quesadilla", category: "Mexican Tex-Mex", price: 175, rating: 4.7, reviews: 67, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1618040994374-d02cc8ef63d7?auto=format&fit=crop&w=600&q=80",
+                description: "Loaded with seasoned minced beef, melted Monterey Jack and cheddar cheese, served with sour cream and pico de gallo."
+            },
+            {
+                id: 34, name: "Loaded Nachos Supreme with Guacamole", category: "Mexican Tex-Mex", price: 165, rating: 4.9, reviews: 140, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?auto=format&fit=crop&w=600&q=80",
+                description: "Tortilla chips piled high with melted cheese sauce, jalapenos, black beans, salsa, guacamole, and sour cream."
+            },
+            {
+                id: 35, name: "Baja Crispy Fish Tacos (3 pcs)", category: "Mexican Tex-Mex", price: 220, rating: 4.8, reviews: 88, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80",
+                description: "Beer-battered fish fillets in corn tortillas with chipotle lime slaw and fresh avocado slices."
+            },
+            {
+                id: 36, name: "Chipotle Shrimp Burrito Bowl", category: "Mexican Tex-Mex", price: 235, rating: 4.9, reviews: 92, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=600&q=80",
+                description: "Grilled chipotle shrimp over cilantro lime rice, black beans, corn salsa, cheese, and avocado crema."
+            },
+            {
+                id: 37, name: "Beef Chimichanga with Queso", category: "Mexican Tex-Mex", price: 195, rating: 4.7, reviews: 75, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
+                description: "Deep-fried flour tortilla stuffed with shredded beef and cheese, drizzled with warm queso dip."
+            },
+            {
+                id: 38, name: "Huevos Rancheros Lunch Plate", category: "Mexican Tex-Mex", price: 155, rating: 4.6, reviews: 60, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80",
+                description: "Fried eggs on corn tortillas with warm ranchero salsa, black beans, avocado, and cotija cheese."
+            },
+
+            // --- ASIAN NOODLES & SUSHI (8 Items) ---
+            {
+                id: 39, name: "Dynamite Shrimp Sushi Roll (8 pcs)", category: "Asian Noodles & Sushi", price: 260, rating: 4.9, reviews: 145, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=80",
+                description: "Crispy tempura shrimp, avocado, cucumber, topped with spicy dynamite sauce and tobiko."
+            },
+            {
+                id: 40, name: "Beef Teriyaki Stir-Fry Noodles", category: "Asian Noodles & Sushi", price: 215, rating: 4.8, reviews: 92, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+                description: "Wok-fried egg noodles with tender beef strips, snap peas, carrots, sesame seeds, and sweet teriyaki glaze."
+            },
+            {
+                id: 41, name: "Crispy Vegetable Spring Rolls (4 pcs)", category: "Asian Noodles & Sushi", price: 95, rating: 4.6, reviews: 64, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1548625361-19db2344e5f3?auto=format&fit=crop&w=600&q=80",
+                description: "Golden fried rolls stuffed with cabbage, glass noodles, carrots, served with sweet chili dipping sauce."
+            },
+            {
+                id: 42, name: "Salmon Avocado Poke Bowl", category: "Asian Noodles & Sushi", price: 280, rating: 4.9, reviews: 138, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+                description: "Fresh diced salmon, avocado, edamame, cucumber, pickled ginger, and sesame soy dressing over sushi rice."
+            },
+            {
+                id: 43, name: "Spicy Chicken Ramen Bowl", category: "Asian Noodles & Sushi", price: 230, rating: 4.9, reviews: 155, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+                description: "Rich savory chicken broth, ramen noodles, grilled chicken, soft-boiled egg, nori, and chili oil."
+            },
+            {
+                id: 44, name: "Shrimp Pad Thai Noodles", category: "Asian Noodles & Sushi", price: 225, rating: 4.8, reviews: 110, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=600&q=80",
+                description: "Stir-fried rice noodles with succulent shrimp, bean sprouts, peanuts, eggs, and tangy tamarind sauce."
+            },
+            {
+                id: 45, name: "Crispy Chicken Gyoza Dumplings (6 pcs)", category: "Asian Noodles & Sushi", price: 130, rating: 4.7, reviews: 82, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=600&q=80",
+                description: "Pan-fried Japanese dumplings stuffed with minced chicken and scallions, served with spicy ponzu sauce."
+            },
+            {
+                id: 46, name: "Crispy Chicken Katsu Curry Rice", category: "Asian Noodles & Sushi", price: 240, rating: 4.9, reviews: 124, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1546069901-d93229b46f5b?auto=format&fit=crop&w=600&q=80",
+                description: "Panko-crusted chicken cutlet served over steaming Japanese rice with rich aromatic curry sauce and pickled radish."
+            },
+
+            // --- HEALTHY BOWLS & SALADS (8 Items) ---
+            {
+                id: 47, name: "Mediterranean Quinoa & Salmon Bowl", category: "Healthy Bowls & Salads", price: 280, rating: 4.9, reviews: 118, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80",
+                description: "Pan-seared Atlantic salmon fillet over organic quinoa, cherry tomatoes, cucumbers, feta, and lemon herb dressing."
+            },
+            {
+                id: 48, name: "Avocado Chicken Caesar Salad", category: "Healthy Bowls & Salads", price: 180, rating: 4.8, reviews: 112, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80",
+                description: "Grilled chicken breast, sliced avocado, crisp romaine, garlic croutons, shaved parmesan, house Caesar dressing."
+            },
+            {
+                id: 49, name: "Greek Goddess Halloumi Salad", category: "Healthy Bowls & Salads", price: 175, rating: 4.7, reviews: 85, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80",
+                description: "Grilled halloumi cheese cubes, cucumbers, kalamata olives, tomatoes, red onions, and oregano olive oil dressing."
+            },
+            {
+                id: 50, name: "Superfood Green Detox Bowl", category: "Healthy Bowls & Salads", price: 165, rating: 4.8, reviews: 74, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80",
+                description: "Kale, baby spinach, roasted sweet potato, avocado, pumpkin seeds, pomegranate seeds, and tahini lemon dressing."
+            },
+            {
+                id: 51, name: "Grilled Steak Protein Power Bowl", category: "Healthy Bowls & Salads", price: 265, rating: 4.9, reviews: 96, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+                description: "Sliced grilled flank steak over brown rice, roasted broccoli, bell peppers, hard-boiled egg, and peanut dressing."
+            },
+            {
+                id: 52, name: "Crispy Falafel Buddha Bowl", category: "Healthy Bowls & Salads", price: 160, rating: 4.7, reviews: 89, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80",
+                description: "Baked falafel balls, hummus, tabbouleh, pickled turnips, cucumbers, and tahini drizzle over greens."
+            },
+            {
+                id: 53, name: "Shrimp & Mango Summer Salad", category: "Healthy Bowls & Salads", price: 225, rating: 4.8, reviews: 68, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80",
+                description: "Grilled garlic shrimp, fresh mango slices, mixed greens, avocado, toasted almonds, and citrus vinaigrette."
+            },
+            {
+                id: 54, name: "Tofu Teriyaki Power Bowl", category: "Healthy Bowls & Salads", price: 170, rating: 4.6, reviews: 52, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+                description: "Crispy glazed tofu cubes, steamed edamame, shredded carrots, purple cabbage, and sesame ginger dressing."
+            },
+
+            // --- DESSERTS (8 Items) ---
+            {
+                id: 55, name: "Molten Lava Chocolate Cake", category: "Desserts", price: 95, rating: 5.0, reviews: 184, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+                description: "Warm chocolate cake with a rich, flowing molten center, served with vanilla bean ice cream."
+            },
+            {
+                id: 56, name: "Classic Egyptian Om Ali with Nuts", category: "Desserts", price: 85, rating: 4.9, reviews: 136, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80",
+                description: "Puff pastry baked in sweet milk, topped with rich cream, mixed nuts, raisins, and coconut flakes."
+            },
+            {
+                id: 57, name: "New York Cheesecake with Strawberry Compote", category: "Desserts", price: 110, rating: 4.9, reviews: 145, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80",
+                description: "Velvety smooth baked cheesecake on a graham cracker crust with sweet strawberry glaze."
+            },
+            {
+                id: 58, name: "Nutella & Banana Crepe", category: "Desserts", price: 90, rating: 4.8, reviews: 120, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=600&q=80",
+                description: "Thin French crepe smothered in rich Nutella hazelnut spread and sliced fresh bananas."
+            },
+            {
+                id: 59, name: "Traditional Basbousa with Almonds", category: "Desserts", price: 65, rating: 4.7, reviews: 94, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80",
+                description: "Semolina cake soaked in aromatic sugar syrup and topped with crunchy roasted almonds."
+            },
+            {
+                id: 60, name: "Tiramisu Italian Classic", category: "Desserts", price: 115, rating: 4.9, reviews: 132, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80",
+                description: "Ladyfinger biscuits dipped in espresso, layered with whipped mascarpone cheese and cocoa powder."
+            },
+            {
+                id: 61, name: "Lotus Biscoff Cheesecake Jar", category: "Desserts", price: 95, rating: 4.8, reviews: 105, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80",
+                description: "Layered cheesecake jar with crushed Biscoff cookies and melted Lotus spread."
+            },
+            {
+                id: 62, name: "Warm Cinnamon Apple Cobbler", category: "Desserts", price: 90, rating: 4.7, reviews: 78, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+                description: "Baked spiced apples with a buttery crumble crust, served warm with vanilla custard."
+            },
+
+            // --- BEVERAGES (6 Items) ---
+            {
+                id: 63, name: "Fresh Strawberry Basil Lemonade", category: "Beverages", price: 55, rating: 4.8, reviews: 88, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80",
+                description: "Hand-crafted lemonade infused with fresh strawberries and aromatic garden basil leaves over crushed ice."
+            },
+            {
+                id: 64, name: "Iced Caramel Macchiato", category: "Beverages", price: 65, rating: 4.9, reviews: 132, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80",
+                description: "Double shot espresso over cold milk and ice, layered with rich buttery caramel drizzle."
+            },
+            {
+                id: 65, name: "Tropical Mango Passion Smoothie", category: "Beverages", price: 75, rating: 4.9, reviews: 114, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80",
+                description: "Blended fresh mango, passion fruit puree, Greek yogurt, and honey with mint garnish."
+            },
+            {
+                id: 66, name: "Refreshing Mint Mojito (Virgin)", category: "Beverages", price: 60, rating: 4.8, reviews: 96, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80",
+                description: "Muddled fresh mint leaves, fresh lime juice, cane sugar, and sparkling club soda over crushed ice."
+            },
+            {
+                id: 67, name: "Classic Iced Peach Green Tea", category: "Beverages", price: 50, rating: 4.7, reviews: 70, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80",
+                description: "Brewed green tea infused with sweet peach nectar and served ice cold."
+            },
+            {
+                id: 68, name: "Artisanal Belgian Chocolate Milkshake", category: "Beverages", price: 85, rating: 5.0, reviews: 142, status: "In Stock",
+                image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80",
+                description: "Thick creamy milkshake blended with premium Belgian dark chocolate, topped with whipped cream."
+            }
+        ];
+
+        let cart = [];
+        let currentCategory = 'All';
+        let currentSearchQuery = '';
+        let currentSort = 'default';
+
+        // Render Food Grid
+        function renderFoodGrid() {
+            const grid = document.getElementById('food-grid');
+            grid.innerHTML = '';
+
+            let filtered = menuItems.filter(item => {
+                const matchesCategory = currentCategory === 'All' || item.category === currentCategory;
+                const matchesSearch = item.name.toLowerCase().includes(currentSearchQuery.toLowerCase()) || 
+                                      item.description.toLowerCase().includes(currentSearchQuery.toLowerCase()) ||
+                                      item.category.toLowerCase().includes(currentSearchQuery.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            // Sorting logic
+            if (currentSort === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (currentSort === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (currentSort === 'rating') {
+                filtered.sort((a, b) => b.rating - a.rating);
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center space-y-3">
+                        <div class="text-4xl">🔍</div>
+                        <h3 class="font-bold text-lg">No lunch items found</h3>
+                        <p class="text-xs text-slate-400">Try searching for something else or switch cuisine categories.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const isSoldOut = item.status === 'Sold Out';
+                const card = document.createElement('div');
+                card.className = "bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group";
+                card.innerHTML = `
+                    <div class="relative h-48 overflow-hidden cursor-pointer" onclick="openQuickView(${item.id})">
+                        <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase text-orange-600">
+                            ${escapeHtml(item.category)}
+                        </div>
+                        <div class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1">
+                            <i class="fa-solid fa-star text-amber-500 text-[9px]"></i>
+                            <span>${item.rating}</span>
+                        </div>
+                        ${isSoldOut ? '<div class="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] flex items-center justify-center"><span class="px-4 py-2 rounded-xl bg-rose-600 text-white font-extrabold text-xs uppercase tracking-widest shadow-lg">Sold Out</span></div>' : ''}
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-1.5 cursor-pointer" onclick="openQuickView(${item.id})">
+                            <h3 class="font-extrabold text-base group-hover:text-orange-600 transition-colors">${escapeHtml(item.name)}</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">${escapeHtml(item.description)}</p>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
+                            <div>
+                                <span class="text-[10px] text-slate-400 font-semibold block uppercase">Price</span>
+                                <span class="font-extrabold text-lg text-orange-600">${item.price} EGP</span>
+                            </div>
+                            <button ${isSoldOut ? 'disabled' : `onclick="openQuickView(${item.id})"`} class="px-4 py-2.5 rounded-xl ${isSoldOut ? 'bg-slate-100 dark:bg-slate-800 text-slate-400 cursor-not-allowed' : 'bg-orange-50 dark:bg-orange-950/60 text-orange-600 hover:bg-orange-600 hover:text-white'} font-bold text-xs shadow-sm transition-all flex items-center space-x-1.5">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Order Now</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Category Filter
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.textContent.includes(cat) || (cat === 'All' && btn.textContent.includes('All'))) {
+                    btn.className = "category-btn px-5 py-2.5 rounded-xl bg-orange-600 text-white font-bold text-xs shadow-md shadow-orange-600/20 whitespace-nowrap transition-all";
+                } else {
+                    btn.className = "category-btn px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-orange-50 font-semibold text-xs border border-slate-200 dark:border-slate-800 whitespace-nowrap transition-all";
+                }
+            });
+            renderFoodGrid();
+        }
+
+        // Search Handlers
+        document.getElementById('hero-search').addEventListener('input', (e) => {
+            currentSearchQuery = e.target.value;
+            renderFoodGrid();
+            document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('sort-select').addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            renderFoodGrid();
+        });
+
+        // Quick View Modal State
+        let activeModalItem = null;
+        let modalQty = 1;
+
+        function openQuickView(id) {
+            const item = menuItems.find(i => i.id === id);
+            if (!item || item.status === 'Sold Out') return;
+            activeModalItem = item;
+            modalQty = 1;
+
+            document.getElementById('modal-img').src = item.image;
+            document.getElementById('modal-category').textContent = item.category;
+            document.getElementById('modal-name').textContent = item.name;
+            document.getElementById('modal-desc').textContent = item.description;
+            document.getElementById('opt-extra').checked = false;
+            document.getElementById('opt-drink').checked = false;
+            document.getElementById('modal-instructions').value = '';
+            document.getElementById('modal-qty').textContent = modalQty;
+
+            let extraLabel = "Extra Cheese / Sauce / Toppings";
+            if (item.category === 'Asian Noodles & Sushi') extraLabel = "Extra Wasabi, Ginger & Soy Sauce";
+            else if (item.category === 'Egyptian Traditional') extraLabel = "Extra Tahini & Baladi Bread";
+            document.getElementById('opt-extra-label').textContent = extraLabel;
+
+            updateModalPrice();
+            document.getElementById('quick-view-modal').classList.remove('hidden');
+        }
+
+        function closeQuickView() {
+            document.getElementById('quick-view-modal').classList.add('hidden');
+            activeModalItem = null;
+        }
+
+        function adjustModalQty(delta) {
+            modalQty = Math.max(1, modalQty + delta);
+            document.getElementById('modal-qty').textContent = modalQty;
+            updateModalPrice();
+        }
+
+        function updateModalPrice() {
+            if (!activeModalItem) return;
+            let unitPrice = activeModalItem.price;
+            if (document.getElementById('opt-extra').checked) unitPrice += 25;
+            if (document.getElementById('opt-drink').checked) unitPrice += 45;
+            document.getElementById('modal-price').textContent = `${unitPrice * modalQty} EGP`;
+        }
+
+        document.getElementById('opt-extra').addEventListener('change', updateModalPrice);
+        document.getElementById('opt-drink').addEventListener('change', updateModalPrice);
+
+        document.getElementById('modal-add-btn').addEventListener('click', () => {
+            if (!activeModalItem) return;
+            let unitPrice = activeModalItem.price;
+            let extras = [];
+            if (document.getElementById('opt-extra').checked) {
+                unitPrice += 25;
+                extras.push(document.getElementById('opt-extra-label').textContent + ' (+25 EGP)');
+            }
+            if (document.getElementById('opt-drink').checked) {
+                unitPrice += 45;
+                extras.push('Drink & Fries Combo (+45 EGP)');
+            }
+
+            const instructions = document.getElementById('modal-instructions').value.trim();
+            const cartItemKey = `${activeModalItem.id}-${extras.join(',')}-${instructions}`;
+            const existing = cart.find(c => c.cartItemKey === cartItemKey);
+
+            if (existing) {
+                existing.qty += modalQty;
+            } else {
+                cart.push({
+                    cartItemKey,
+                    id: activeModalItem.id,
+                    name: activeModalItem.name,
+                    price: unitPrice,
+                    image: activeModalItem.image,
+                    extras,
+                    instructions,
+                    qty: modalQty
+                });
+            }
+
+            closeQuickView();
+            updateCartUI();
+            openCartDrawer();
+        });
+
+        // Cart Drawer Logic
+        const cartDrawer = document.getElementById('cart-drawer');
+        const cartOverlay = document.getElementById('cart-drawer-overlay');
+
+        function openCartDrawer() {
+            cartDrawer.classList.remove('translate-x-full');
+            cartOverlay.classList.remove('hidden');
+        }
+
+        function closeCartDrawer() {
+            cartDrawer.classList.add('translate-x-full');
+            cartOverlay.classList.add('hidden');
+        }
+
+        document.getElementById('open-cart-btn').addEventListener('click', openCartDrawer);
+        document.getElementById('close-cart-btn').addEventListener('click', closeCartDrawer);
+        cartOverlay.addEventListener('click', closeCartDrawer);
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+
+            let totalItems = 0;
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="py-16 text-center space-y-3">
+                        <div class="text-4xl">🛒</div>
+                        <h4 class="font-bold text-sm">Your cart is empty</h4>
+                        <p class="text-xs text-slate-400">Add delicious lunch items from our 65+ menu options.</p>
+                    </div>
+                `;
+                document.getElementById('cart-badge').textContent = '0';
+                document.getElementById('cart-item-count').textContent = '0 items selected';
+                document.getElementById('cart-subtotal').textContent = '0 EGP';
+                document.getElementById('cart-total').textContent = '30 EGP';
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                totalItems += item.qty;
+                subtotal += item.price * item.qty;
+
+                const div = document.createElement('div');
+                div.className = "py-4 flex items-center justify-between gap-4";
+                div.innerHTML = `
+                    <div class="flex items-center space-x-3 min-w-0">
+                        <img src="${escapeHtml(item.image)}" alt="" class="w-14 h-14 rounded-2xl object-cover shrink-0">
+                        <div class="min-w-0">
+                            <h4 class="font-bold text-xs truncate">${escapeHtml(item.name)}</h4>
+                            ${item.extras.length > 0 ? `<p class="text-[10px] text-orange-600 truncate">${item.extras.join(', ')}</p>` : ''}
+                            ${item.instructions ? `<p class="text-[10px] text-slate-400 italic truncate">Note: ${escapeHtml(item.instructions)}</p>` : ''}
+                            <p class="text-xs font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">${item.price * item.qty} EGP</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2 shrink-0">
+                        <div class="flex items-center border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                            <button onclick="changeCartQty(${index}, -1)" class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 font-bold text-xs">-</button>
+                            <span class="px-3 font-bold text-xs">${item.qty}</span>
+                            <button onclick="changeCartQty(${index}, 1)" class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 font-bold text-xs">+</button>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="p-2 text-slate-400 hover:text-rose-500 transition-colors">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            document.getElementById('cart-badge').textContent = totalItems;
+            document.getElementById('cart-item-count').textContent = `${totalItems} items selected`;
+            document.getElementById('cart-subtotal').textContent = `${subtotal} EGP`;
+            document.getElementById('cart-total').textContent = `${subtotal > 0 ? subtotal + 30 : 0} EGP`;
+        }
+
+        function changeCartQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // Checkout & Success Order
+        function submitOrder() {
+            if (cart.length === 0) {
+                alert("Your cart is empty. Please add items before checking out.");
+                return;
+            }
+            const name = document.getElementById('checkout-name').value.trim();
+            const address = document.getElementById('checkout-address').value.trim();
+
+            if (!name || !address) {
+                alert("Please fill in your name and delivery address to proceed.");
+                return;
+            }
+
+            closeCartDrawer();
+            const orderId = `#MM-${Math.floor(1000 + Math.random() * 9000)}`;
+            document.getElementById('success-order-id').textContent = orderId;
+            document.getElementById('success-modal').classList.remove('hidden');
+
+            cart = [];
+            updateCartUI();
+            document.getElementById('checkout-name').value = '';
+            document.getElementById('checkout-address').value = '';
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        // Initialize food grid on load
+        renderFoodGrid();
+    </script>
+</body>
+</html>
